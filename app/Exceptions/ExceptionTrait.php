@@ -17,27 +17,27 @@ trait ExceptionTrait
             return $this->httpResponse($e);
         }
 
-        return parent::render($request, $exception);
+        return parent::render($request, $e);
     }
 
-    private function isModel($e)
+    public function isModel($e)
     {
         return $e instanceof ModelNotFoundException;
     }
 
-    private function isHttp($e)
+    public function isHttp($e)
     {
         return $e instanceof NotFoundHttpException;
     }
 
-    private function modelResponse($e)
+    public function modelResponse($e)
     {
         return response()->json([
             'errors' => 'Product Model not found'
         ], Response::HTTP_NOT_FOUND);
     }
 
-    private function httpResponse($e)
+    public function httpResponse($e)
     {
         return response()->json([
             'errors' => 'The url provided is not valid'
