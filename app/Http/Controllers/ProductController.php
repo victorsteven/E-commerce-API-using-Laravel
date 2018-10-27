@@ -20,7 +20,7 @@ class ProductController extends Controller
         // return ProductResource::collection(Product::all());
 
         // return new ProductCollection(Product::all()); //this will transform only one product, to transform all products, we use collection:
-        return ProductCollection::collection(Product::all());
+        return ProductCollection::collection(Product::paginate(20));
     }
 
     /**
